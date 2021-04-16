@@ -1,0 +1,9 @@
+﻿Commands :
+1. enable-migrations : فعال کردن عملیات ماگریشن
+2. update-database : بروز کردن بانک اطلاعاتی
+3. add-migration "migration name" : اضافه کردن ماگریشن جدید بر اساس آخرین تغییرات
+4. drop-database :
+5. remove-migration :
+6. ...
+
+Install-Package Microsoft.jQuery.Unobtrusive.Ajax

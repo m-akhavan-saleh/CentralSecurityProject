@@ -1,0 +1,66 @@
+﻿@model CentralSecurityProject.Models.Security.AppResourceModel
+<h4><i class="glyphicon glyphicon-apple"></i>حذف @ViewBag.Title</h4>
+<hr />
+
+@using (Html.BeginForm("Delete", "AppResource", null, FormMethod.Post, htmlAttributes: new { }))
+{
+    @Html.AntiForgeryToken()
+
+    @Html.HiddenFor(m => m.AppResourceId);
+
+    <div class="form-group row">
+        @Html.LabelFor(m => m.AppResourceNo, htmlAttributes: new { @class = "col-md-2 col-form-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.AppResourceNo, htmlAttributes: new { @class = "form-control" })
+        </div>
+    </div>
+
+    <div class="form-group row">
+        @Html.LabelFor(m => m.ApplicationId, htmlAttributes: new { @class = "col-md-2 col-form-label" })
+        <div class="col-md-10">
+            @Html.DropDownListFor(m => m.ApplicationId, (SelectList)ViewBag.Applications, htmlAttributes: new { @class = "form-control" })
+        </div>
+    </div>
+
+    <div class="form-group row">
+        @Html.LabelFor(m => m.RefAppResourceId, htmlAttributes: new { @class = "col-md-2 col-form-label" })
+        <div class="col-md-10">
+            @Html.DropDownListFor(m => m.RefAppResourceId, (SelectList)ViewBag.AppResources, htmlAttributes: new { @class = "form-control" })
+        </div>
+    </div>
+
+        <div class="form-group row">
+            @Html.LabelFor(m => m.ResourceName, htmlAttributes: new { @class = "col-md-2 col-form-label" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(m => m.ResourceName, htmlAttributes: new { @class = "form-control" })
+            </div>
+        </div>
+
+        <div class="form-group row">
+            @Html.LabelFor(m => m.ResourceDesc, htmlAttributes: new { @class = "col-md-2 col-form-label" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(m => m.ResourceDesc, htmlAttributes: new { @class = "form-control" })
+            </div>
+        </div>
+
+        <div class="form-group row">
+            @Html.LabelFor(m => m.Show, htmlAttributes: new { @class = "col-md-2 col-form-label" })
+            <div class="col-md-10">
+                @Html.CheckBoxFor(m => m.Show, htmlAttributes: new { @class = "form-control" })
+            </div>
+        </div>
+
+        <div class="form-group row">
+            @Html.LabelFor(m => m.ControlName, htmlAttributes: new { @class = "col-md-2 col-form-label" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(m => m.ControlName, htmlAttributes: new { @class = "form-control" })
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="offset-sm-2 col-md-10">
+                <input type="submit" value=@Resources.Resource.Delete class="btn btn-warning" />
+                @Html.ActionLink(Resources.Resource.Back, "Index", "AppResource", null, htmlAttributes: new { @class = "btn btn-secondary" })
+            </div>
+        </div>
+}

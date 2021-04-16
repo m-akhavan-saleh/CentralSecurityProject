@@ -1,0 +1,77 @@
+﻿@model IEnumerable<CentralSecurityProject.Models.Security.AppGroupModel>
+<h4><i class="glyphicon glyphicon-alert"></i>@ViewBag.Title</h4>
+<hr />
+
+<div class="col-md-12">
+    @Html.CustomActionLink(Resources.Resource.Create, "Create", "AppGroup", null, actionLinkType: CentralSecurityProject.Common.ActionLinkType.Create) |
+    @{
+        if (ViewBag.ID != null)
+        {
+            @Html.CustomActionLink(Resources.Resource.Edit, "Edit", "AppGroup", new { id = @ViewBag.ID }, actionLinkType: CentralSecurityProject.Common.ActionLinkType.Edit)
+            <a>|</a>
+            @Html.CustomActionLink(Resources.Resource.Delete, "Delete", "AppGroup", new { id = @ViewBag.ID }, actionLinkType: CentralSecurityProject.Common.ActionLinkType.Delete)
+            <a>|</a>
+            @Html.CustomActionLink(Resources.Resource.Details, "Details", "AppGroup", new { id = @ViewBag.ID }, actionLinkType: CentralSecurityProject.Common.ActionLinkType.Details)
+        }
+        else
+        {
+            @Html.CustomActionLink(Resources.Resource.Edit, "Edit", "AppGroup", new { id = @ViewBag.ID }, linkClass: "btn btn-secondary btn-sm disabled", actionLinkType: CentralSecurityProject.Common.ActionLinkType.Edit)
+            <a>|</a>
+            @Html.CustomActionLink(Resources.Resource.Delete, "Delete", "AppGroup", new { id = @ViewBag.ID }, linkClass: "btn btn-secondary btn-sm disabled", actionLinkType: CentralSecurityProject.Common.ActionLinkType.Delete)
+            <a>|</a>
+            @Html.CustomActionLink(Resources.Resource.Details, "Details", "AppGroup", new { id = @ViewBag.ID }, linkClass: "btn btn-secondary btn-sm disabled", actionLinkType: CentralSecurityProject.Common.ActionLinkType.Details)
+        }
+    }
+    <table class="table table-hover">
+        <thead>
+            <tr class="bg-secondary">
+
+                <th class="text-center"></th>
+                <th class="text-center">@Html.DisplayNameFor(m => m.AppGroupId)</th>
+                <th class="text-center">@Html.DisplayNameFor(m => m.AppGroupNo)</th>
+                <th class="text-center">@Html.DisplayNameFor(m => m.AppGroupName)</th>
+                <th class="text-center">@Html.DisplayNameFor(m => m.ApplicationId)</th>
+                <th class="text-center">@Html.DisplayNameFor(m => m.IsActive)</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            @{
+                if (Model != null)
+                {
+                    foreach (CentralSecurityProject.Models.Security.AppGroupModel item in Model)
+                    {
+                        if (ViewBag.ID != null && ViewBag.ID == @item.AppGroupId)
+                        {
+                            <tr class="text-center" style="background-color:#d6e0f5">
+                                <td>
+                                    @Html.CustomActionLink(Resources.Resource.Select, "Index", "AppGroup", new { id = item.AppGroupId }, linkClass: "btn btn-primary btn-sm", actionLinkType: CentralSecurityProject.Common.ActionLinkType.Selected)
+                                </td>
+                                <td>@item.AppGroupId</td>
+                                <td>@item.AppGroupNo</td>
+                                <td class="text-right">@item.AppGroupName</td>
+                                <td>@item.ApplicationId</td>
+                                <td>@(item.IsActive ? "فعال" : "غیر فعال")</td>
+                            </tr>
+                        }
+                        else
+                        {
+                            <tr class="text-center">
+                                <td>
+                                    @Html.CustomActionLink(Resources.Resource.Select, "Index", "AppGroup", new { id = item.AppGroupId }, linkClass: "btn btn-secondary btn-sm", actionLinkType: CentralSecurityProject.Common.ActionLinkType.Unselected)
+                                </td>
+                                <td>@item.AppGroupId</td>
+                                <td>@item.AppGroupNo</td>
+                                <td class="text-right">@item.AppGroupName</td>
+                                <td>@item.ApplicationId</td>
+                                <td>@(item.IsActive ? "فعال" : "غیر فعال")</td>
+                            </tr>
+                        }
+                    }
+                }
+            }
+        </tbody>
+    </table>
+
+
+</div>

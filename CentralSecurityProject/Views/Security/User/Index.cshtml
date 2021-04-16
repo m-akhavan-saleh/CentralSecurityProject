@@ -1,0 +1,80 @@
+﻿@model IEnumerable<CentralSecurityProject.Models.Security.UserModel>
+<h4><i class="glyphicon glyphicon-alert"></i>@ViewBag.Title</h4>
+<hr />
+<div class="col-md-12">
+    @Html.CustomActionLink(Resources.Resource.Create, "Create", "User", null, actionLinkType: CentralSecurityProject.Common.ActionLinkType.Create) |
+    @{
+        if (ViewBag.ID != null)
+        {
+            @Html.CustomActionLink(Resources.Resource.Edit, "Edit", "User", new { id = @ViewBag.ID, UserId = @ViewBag.UserId }, actionLinkType: CentralSecurityProject.Common.ActionLinkType.Edit)
+            <a>|</a>
+            @Html.CustomActionLink(Resources.Resource.Delete, "Delete", "User", new { id = @ViewBag.ID, UserId = @ViewBag.UserId }, actionLinkType: CentralSecurityProject.Common.ActionLinkType.Delete)
+            <a>|</a>
+            @Html.CustomActionLink(Resources.Resource.Details, "Details", "User", new { id = @ViewBag.ID, UserId = @ViewBag.UserId }, actionLinkType: CentralSecurityProject.Common.ActionLinkType.Details)
+        }
+        else
+        {
+            @Html.CustomActionLink(Resources.Resource.Edit, "Edit", "User", new { id = @ViewBag.ID, UserId = @ViewBag.UserId }, linkClass: "btn btn-secondary btn-sm disabled", actionLinkType: CentralSecurityProject.Common.ActionLinkType.Edit)
+            <a>|</a>
+            @Html.CustomActionLink(Resources.Resource.Delete, "Delete", "User", new { id = @ViewBag.ID, UserId = @ViewBag.UserId }, linkClass: "btn btn-secondary btn-sm disabled", actionLinkType: CentralSecurityProject.Common.ActionLinkType.Delete)
+            <a>|</a>
+            @Html.CustomActionLink(Resources.Resource.Details, "Details", "User", new { id = @ViewBag.ID, UserId = @ViewBag.UserId }, linkClass: "btn btn-secondary btn-sm disabled", actionLinkType: CentralSecurityProject.Common.ActionLinkType.Details)
+        }
+    }
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr class="bg-secondary text-center">
+                <th></th>
+                <th>@Html.DisplayNameFor(m => m.Photo)</th>
+                <th>@Html.DisplayNameFor(m => m.UserLogin)</th>
+                <th>@Html.DisplayNameFor(m => m.UserName)</th>
+                <th>@Html.DisplayNameFor(m => m.Departement)</th>
+                <th>@Html.DisplayNameFor(m => m.Post)</th>
+                <th>@Html.DisplayNameFor(m => m.Telephon)</th>
+                <th>@Html.DisplayNameFor(m => m.IsActive)</th>
+                <th>عملیات</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (CentralSecurityProject.Models.Security.UserModel item in Model)
+            {
+                if (ViewBag.ID != null && ViewBag.ID == @item.UserId)
+                {
+                    <tr class="text-center" style="background-color:#d6e0f5">
+                        <td>
+                            @Html.ActionLink(Resources.Resource.Select, "Index", "User", new { id = item.UserId }, htmlAttributes: new { @class = "btn btn-primary btn-sm" })
+                        </td>
+                        <td><img width="32" height="32" src="@Url.Action("GetUserPhoto", "User", new { id = item.UserId })" /></td>
+                        <td>@item.UserLogin</td>
+                        <td>@item.UserName</td>
+                        <td>@item.Departement</td>
+                        <td>@item.Post</td>
+                        <td>@item.Telephon</td>
+                        <td>@(item.IsActive ? "فعال" : "غیر فعال")</td>
+                        <td class="text-center">
+                            @Html.ActionLink("برنامه ها", "Index", "AppUser", new { UserId = item.UserId }, htmlAttributes: new { @class = "btn btn-secondary" })
+                        </td>
+                    </tr>
+                }
+                else
+                {
+                    <tr class="text-center">
+                        <td>
+                            @Html.ActionLink(Resources.Resource.Select, "Index", "User", new { id = item.UserId }, htmlAttributes: new { @class = "btn btn-secondary btn-sm" })
+                        </td>
+                        <td><img width="32" height="32" src="@Url.Action("GetUserPhoto", "User", new { id = item.UserId })" /></td>
+                        <td>@item.UserLogin</td>
+                        <td>@item.UserName</td>
+                        <td>@item.Departement</td>
+                        <td>@item.Post</td>
+                        <td>@item.Telephon</td>
+                        <td>@(item.IsActive ? "فعال" : "غیر فعال")</td>
+                        <td class="text-center">
+                            @Html.ActionLink("برنامه ها", "Index", "AppUser", new { UserId = item.UserId }, htmlAttributes: new { @class = "btn btn-secondary" })
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>

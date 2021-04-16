@@ -1,0 +1,76 @@
+﻿@model IEnumerable<CentralSecurityProject.Models.Security.AppResourceModel>
+<h4><i class="glyphicon glyphicon-alert"></i>@ViewBag.Title</h4>
+<hr />
+
+<div class="col-md-12">
+    @Html.CustomActionLink(Resources.Resource.Create, "Create", "AppResource", null, actionLinkType: CentralSecurityProject.Common.ActionLinkType.Create) |
+    @{
+        if (ViewBag.ID != null)
+        {
+            @Html.CustomActionLink(Resources.Resource.Edit, "Edit", "AppResource", new { id = @ViewBag.ID }, actionLinkType: CentralSecurityProject.Common.ActionLinkType.Edit)
+            <a>|</a>
+            @Html.CustomActionLink(Resources.Resource.Delete, "Delete", "AppResource", new { id = @ViewBag.ID }, actionLinkType: CentralSecurityProject.Common.ActionLinkType.Delete)
+            <a>|</a>
+            @Html.CustomActionLink(Resources.Resource.Details, "Details", "AppResource", new { id = @ViewBag.ID }, actionLinkType: CentralSecurityProject.Common.ActionLinkType.Details)
+        }
+        else
+        {
+            @Html.CustomActionLink(Resources.Resource.Edit, "Edit", "AppResource", new { id = @ViewBag.ID }, linkClass: "btn btn-secondary btn-sm disabled", actionLinkType: CentralSecurityProject.Common.ActionLinkType.Edit)
+            <a>|</a>
+            @Html.CustomActionLink(Resources.Resource.Delete, "Delete", "AppResource", new { id = @ViewBag.ID }, linkClass: "btn btn-secondary btn-sm disabled", actionLinkType: CentralSecurityProject.Common.ActionLinkType.Delete)
+            <a>|</a>
+            @Html.CustomActionLink(Resources.Resource.Details, "Details", "AppResource", new { id = @ViewBag.ID }, linkClass: "btn btn-secondary btn-sm disabled", actionLinkType: CentralSecurityProject.Common.ActionLinkType.Details)
+        }
+    }
+
+    <table class="table table-hover">
+        <thead>
+            <tr class="bg-secondary">
+                <th class="text-center"></th>
+                <th class="text-center">@Html.DisplayNameFor(m => m.AppResourceNo)</th>
+                <th class="text-center">@Html.DisplayNameFor(m => m.ResourceName)</th>
+                <th class="text-center">@Html.DisplayNameFor(m => m.ResourceDesc)</th>
+                <th class="text-center">@Html.DisplayNameFor(m => m.ApplicationId)</th>
+                <th class="text-center">@Html.DisplayNameFor(m => m.Show)</th>
+            </tr>
+        </thead>
+        <tbody>
+            @{
+                if (Model != null)
+                {
+                    foreach (CentralSecurityProject.Models.Security.AppResourceModel item in Model)
+                    {
+                        if (ViewBag.ID != null && ViewBag.ID == @item.AppResourceId)
+                        {
+                            <tr style="background-color:#d6e0f5">
+                                <td class="text-center">
+                                    @Html.ActionLink("انتخاب", "Index", "AppResource", new { id = item.AppResourceId }, htmlAttributes: new { @class = "btn btn-secondary btn-sm" })
+                                </td>
+                                <td>@item.AppResourceNo</td>
+                                <td>@item.ResourceName</td>
+                                <td>@item.ResourceDesc</td>
+                                <td>@item.ApplicationId</td>
+                                <td>@(item.Show ? "هست" : "نیست")</td>
+                            </tr>
+                        }
+                        else
+                        {
+                            <tr>
+                                <td class="text-center">
+                                    @Html.ActionLink("انتخاب", "Index", "AppResource", new { id = item.AppResourceId }, htmlAttributes: new { @class = "btn btn-secondary btn-sm" })
+                                </td>
+                                <td>@item.AppResourceNo</td>
+                                <td>@item.ResourceName</td>
+                                <td>@item.ResourceDesc</td>
+                                <td>@item.ApplicationId</td>
+                                <td>@(item.Show ? "هست" : "نیست")</td>
+                            </tr>
+                        }
+                    }
+                }
+            }
+        </tbody>
+    </table>
+
+
+</div>

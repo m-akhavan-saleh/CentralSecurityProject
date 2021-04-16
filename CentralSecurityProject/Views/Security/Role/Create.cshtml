@@ -1,0 +1,65 @@
+﻿@model CentralSecurityProject.Models.Security.RoleModel
+<h4><i class="glyphicon glyphicon-apple"></i>تعریف @ViewBag.Title</h4>
+<hr />
+
+@using (Html.BeginForm("CreateRWU", "Role", null, FormMethod.Post, htmlAttributes: new { }))
+{
+    @Html.AntiForgeryToken() // استفاده از متد فوق به جهت جلوگیری از ارسال درخواست  خارج از سایت
+
+    @Html.ValidationSummary(false, null, htmlAttributes: new { @class = "alert alert-danger" }) // false : دراین زمان علاوه بر خطاهای سطح فرم خطاهای کنترلر ها رو نیز نمایش می دهد
+    //@Html.ValidationSummary(true, null, htmlAttributes: new { @class = "alert alert-danger" }) // true : دراین زمان تنها خطاهای سطح فرم نمایش داده می شود
+
+    <div class="form-group row">
+        @Html.LabelFor(m => m.RoleCode, htmlAttributes: new { @class = "col-md-2 col-form-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.RoleCode, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.RoleCode, "", new { @class = "text-danger field-validation-error" })
+        </div>
+    </div>
+
+    <div class="form-group row">
+        @Html.LabelFor(m => m.RoleName, htmlAttributes: new { @class = "col-md-2 col-form-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.RoleName, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.RoleName, "", new { @class = "text-danger field-validation-error" })
+        </div>
+    </div>
+
+    <div class="form-group row">
+        @Html.LabelFor(m => m.IsActive, htmlAttributes: new { @class = "col-md-2 col-form-label" })
+        <div class="col-md-1">
+            @Html.CheckBoxFor(m => m.IsActive, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.IsActive, "", new { @class = "text-danger field-validation-error" })
+        </div>
+    </div>
+
+    <div class="form-group row">
+        @Html.LabelFor(m => m.Description, htmlAttributes: new { @class = "col-md-2 col-form-label" })
+        <div class="col-md-10">
+            @Html.TextAreaFor(m => m.Description, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Description, "", new { @class = "text-danger field-validation-error" })
+        </div>
+    </div>
+
+    <div class="form-group row">
+        @Html.LabelFor(m => m.User_List, htmlAttributes: new { @class = "col-md-2 col-form-label" })
+        <div class="pre-scrollable list-group-item col-md-5">
+            @*@Html.ListBoxFor(m => m.User_List, new MultiSelectList(Model.User_List, "UserId", "UserName"), htmlAttributes: new { @class = "col-md-10", Multiple = "multiple" })*@
+            @for (int i = 0; i < Model.User_List.Count; i++)
+            {
+                <div class="form-row">
+                    @Html.HiddenFor(m=>m.User_List.ToArray()[i].UserId)
+                    @Html.CheckBox("[" + i + "].Selected", htmlAttributes: new { @class = "" })
+                    @Html.Label(Model.User_List.ToArray()[i].DisplayUserName)
+                </div>
+            }
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <div class="offset-sm-2 col-md-10">
+            <input type="submit" value="ثبت" class="btn btn-success" />
+            @Html.ActionLink("بازگشت", "Index", "Role", null, htmlAttributes: new { @class = "btn btn-secondary" })
+        </div>
+    </div>
+}

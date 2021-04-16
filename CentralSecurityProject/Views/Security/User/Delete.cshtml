@@ -1,0 +1,136 @@
+﻿@model CentralSecurityProject.Models.Security.UserModel
+<h4><i class="glyphicon glyphicon-apple"></i>حذف @ViewBag.Title</h4>
+<hr />
+
+@using (Html.BeginForm("Delete", "User", FormMethod.Post, htmlAttributes: new { }))
+{
+    @Html.AntiForgeryToken()
+
+    @Html.HiddenFor(m => m.UserId)
+
+    <div class="form-group row">
+        @Html.LabelFor(m => m.UserLogin, htmlAttributes: new { @class = "col-md-2 col-form-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.UserLogin, htmlAttributes: new { @class = "form-control" })
+        </div>
+    </div>
+
+    <div class="form-group row">
+        @Html.LabelFor(m => m.UserName, htmlAttributes: new { @class = "col-md-2 col-form-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.UserName, htmlAttributes: new { @class = "form-control" })
+        </div>
+    </div>
+
+    <div class="form-group row">
+        @Html.LabelFor(m => m.Password, htmlAttributes: new { @class = "col-md-2 col-form-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.Password, htmlAttributes: new { @class = "form-control" })
+        </div>
+    </div>
+
+    <div class="form-group row">
+        @Html.LabelFor(m => m.OldPass, htmlAttributes: new { @class = "col-md-2 col-form-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.OldPass, htmlAttributes: new { @class = "form-control" })
+        </div>
+    </div>
+
+    <div class="form-group row">
+        @Html.LabelFor(m => m.Departement, htmlAttributes: new { @class = "col-md-2 col-form-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.Departement, htmlAttributes: new { @class = "form-control" })
+        </div>
+    </div>
+
+    <div class="form-group row">
+        @Html.LabelFor(m => m.Post, htmlAttributes: new { @class = "col-md-2 col-form-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.Post, htmlAttributes: new { @class = "form-control" })
+        </div>
+    </div>
+
+    <div class="form-group row">
+        @Html.LabelFor(m => m.IsActive, htmlAttributes: new { @class = "col-md-2 col-form-label" })
+        <div class="col-md-10">
+            @Html.CheckBoxFor(m => m.IsActive, htmlAttributes: new { @class = "form-control" })
+        </div>
+    </div>
+
+    <div class="form-group row">
+        @Html.LabelFor(m => m.Telephon, htmlAttributes: new { @class = "col-md-2 col-form-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.Telephon, htmlAttributes: new { @class = "form-control" })
+        </div>
+    </div>
+
+    <div class="form-group row">
+        @Html.LabelFor(m => m.PersonalId, htmlAttributes: new { @class = "col-md-2 col-form-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.PersonalId, htmlAttributes: new { @class = "form-control" })
+        </div>
+    </div>
+
+    <div class="form-group row">
+        @Html.LabelFor(m => m.SetPassDate, htmlAttributes: new { @class = "col-md-2 col-form-label" })
+        <div class="col-md-10">
+            @Html.EditorFor(m => m.SetPassDate,new {htmlAttributes = new { @class = "form-control" }})
+        </div>
+    </div>
+
+    <div class="form-group row">
+        @Html.LabelFor(m => m.ChangePassAtNextLogon, htmlAttributes: new { @class = "col-md-2 col-form-label" })
+        <div class="col-md-10">
+            @Html.CheckBoxFor(m => m.ChangePassAtNextLogon, htmlAttributes: new { @class = "form-control" })
+        </div>
+    </div>
+
+    <div class="form-group row">
+        @Html.LabelFor(m => m.UserCanNotChangePass, htmlAttributes: new { @class = "col-md-2 col-form-label" })
+        <div class="col-md-10">
+            @Html.CheckBoxFor(m => m.UserCanNotChangePass, htmlAttributes: new { @class = "form-control" })
+        </div>
+    </div>
+
+    <div class="form-group row">
+        @Html.LabelFor(m => m.MaxPassAge, htmlAttributes: new { @class = "col-md-2 col-form-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.MaxPassAge, htmlAttributes: new { @class = "form-control" })
+        </div>
+    </div>
+
+    <div class="form-group row">
+        @Html.LabelFor(m => m.MinPassAge, htmlAttributes: new { @class = "col-md-2 col-form-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.MinPassAge, htmlAttributes: new { @class = "form-control" })
+        </div>
+    </div>
+
+    <div class="form-group row">
+        @Html.LabelFor(m => m.MinPassLength, htmlAttributes: new { @class = "col-md-2 col-form-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.MinPassLength, htmlAttributes: new { @class = "form-control" })
+        </div>
+    </div>
+
+    <div class="form-group row">
+        @Html.LabelFor(m => m.PassMustComplexity, htmlAttributes: new { @class = "col-md-2 col-form-label" })
+        <div class="col-md-10">
+            @Html.CheckBoxFor(m => m.PassMustComplexity, htmlAttributes: new { @class = "form-control" })
+        </div>
+    </div>
+
+    <div class="form-group row">
+        @Html.LabelFor(m => m.EnforcePassHistory, htmlAttributes: new { @class = "col-md-2 col-form-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.EnforcePassHistory, htmlAttributes: new { @class = "form-control" })
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <div class="offset-sm-2 col-md-10">
+            <input type="submit" value="حذف" class="btn btn-success" />
+            @Html.ActionLink("بازگشت", "Index", "User", htmlAttributes: new { @class = "btn btn-secondary" })
+        </div>
+    </div>
+}

@@ -1,0 +1,33 @@
+﻿@model CentralSecurityProject.Models.Security.ApplicationGroupModel
+<h4><i class="glyphicon glyphicon-apple"></i>@ViewBag.Title</h4>
+<hr />
+
+@using (Html.BeginForm("Delete", "ApplicationGroup", FormMethod.Post, htmlAttributes: new { }))
+{
+    @Html.AntiForgeryToken()
+
+    @Html.ValidationSummary(false, null, htmlAttributes: new { @class = "alert alert-danger" })
+
+    @Html.HiddenFor(m => m.ApplicationGroupId)
+
+    <div class="form-group row">
+        @Html.LabelFor(m => m.ApplicationGroupName, htmlAttributes: new { @class = "col-lg-1 col-form-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.ApplicationGroupName, htmlAttributes: new { @class = "form-control", @readonly = "readonly" })
+        </div>
+    </div>
+
+    <div class="form-group row">
+        @Html.LabelFor(m => m.IsActive, htmlAttributes: new { @class = "col-lg-1 col-form-label" })
+        <div class="col-md-1">
+            @Html.CheckBoxFor(m => m.IsActive, htmlAttributes: new { @class = "form-control", @disabled = "disabled" })
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <div class="offset-sm-2 col-md-10">
+            <input type="submit" value=@Resources.Resource.Delete class="btn btn-success" />
+            @Html.ActionLink(Resources.Resource.Back, "Index", "ApplicationGroup", htmlAttributes: new { @class = "btn btn-secondary" })
+        </div>
+    </div>
+}

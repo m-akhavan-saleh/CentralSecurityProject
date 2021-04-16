@@ -1,0 +1,40 @@
+﻿@model IEnumerable<CentralSecurityProject.ViewModels.Security.ApplicationViewModel>
+<h4><i class="glyphicon glyphicon-alert"></i>@ViewBag.Title</h4>
+<hr />
+
+<div class="col-md-12">
+    @Html.ActionLink("جدید", "Create", "Application", new { ApplicationGroupId = ViewBag.ApplicationGroupId }, htmlAttributes: new { @class = "btn btn-secondary" })
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr class="bg-secondary">
+                <th class="text-center">@Html.DisplayNameFor(m => m.ApplicationNum)</th>
+                <th class="text-center">@Html.DisplayNameFor(m => m.ApplicationName)</th>
+                <th class="text-center">@Html.DisplayNameFor(m => m.IsActive)</th>
+                <th class="text-center">@Html.DisplayNameFor(m => m.ApplicationGroupName)</th>
+                <th class="text-center">عملیات</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model != null)
+            {
+                foreach (CentralSecurityProject.ViewModels.Security.ApplicationViewModel item in Model)
+                {
+                    <tr class="text-center">
+                        <td>@item.ApplicationNum</td>
+                        <td>@item.ApplicationName</td>
+                        <td>@(item.IsActive ? "فعال" : "غیر فعال")</td>
+                        <td>@item.ApplicationGroupName</td>
+                        <td>
+                            @Html.ActionLink("ویرایش", "Edit", "Application", new { id = item.ApplicationId, ApplicationGroupId = ViewBag.ApplicationGroupId }, htmlAttributes: new { @class = "btn btn-secondary" }) |
+                            @Html.ActionLink("حذف", "Delete", "Application", new { id = item.ApplicationId, ApplicationGroupId = ViewBag.ApplicationGroupId }, htmlAttributes: new { @class = "btn btn-secondary" }) |
+                            @Html.ActionLink("جزئیات", "Details", "Application", new { id = item.ApplicationId, ApplicationGroupId = ViewBag.ApplicationGroupId }, htmlAttributes: new { @class = "btn btn-secondary" }) |
+                            @Html.ActionLink("کاربران سیستم", "Index", "AppUser", new { ApplicationId = item.ApplicationId }, htmlAttributes: new { @class = "btn btn-secondary" })
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+
+
+</div>

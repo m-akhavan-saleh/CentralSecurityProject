@@ -1,0 +1,178 @@
+﻿@* ----------------------------- *@
+@*  The Second View Is Compiled  *@
+@* Layout Equivalent Master Page *@
+@* ----------------------------- *@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - @Resources.Resource.ApplicationTitle</title>
+    @Styles.Render("~/Content/css") @*فراخوانی باندل های مورد نظر جهت ارسال فایل های جاوا یا سی اس اس از سمت سرور به سمت کلاینت بکار گرفته می شود*@
+    @Scripts.Render("~/bundles/modernizr")
+
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="direction:rtl">
+        @*<a class="navbar-brand" href="#">سیستم امنیت مرکزی</a>*@
+        <a class="navbar-brand" href="#">@Resources.Resource.ApplicationTitle</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <ul class="navbar-nav">
+                <li>
+                    <div class="form-inline">
+                        <span class="glyphicon glyphicon-home" style="color:white"></span>
+                        @Html.ActionLink(@Resources.Resource.Home, "Index", "Home", null, htmlAttributes: new { @class = "nav-item nav-link active" })
+                    </div>
+                </li>
+
+                <li class="nav-item dropdown form-inline">
+                    <span class="glyphicon glyphicon-th" style="color:gray"></span>
+                    <a class="nav-link dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        @Resources.Resource.Base
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink">
+                        @Html.ActionLink(Resources.Resource.DefineUsers + " ...", "Index", "User", null, htmlAttributes: new { @class = "dropdown-item" })
+                        <div class="dropdown-divider"></div>
+                        @Html.ActionLink(Resources.Resource.DefineSystemGroup + " ...", "Index", "ApplicationGroup", null, htmlAttributes: new { @class = "dropdown-item" })
+                        <div class="dropdown-divider"></div>
+                        @Html.ActionLink(Resources.Resource.DefineSystem + " ...", "Index", "Application", null, htmlAttributes: new { @class = "dropdown-item" })
+                        @Html.ActionLink(Resources.Resource.DefineParamSystem + " ...", "Index", "AppParameter", null, htmlAttributes: new { @class = "dropdown-item" })
+                        <div class="dropdown-divider"></div>
+                        @Html.ActionLink(Resources.Resource.DefineAppGroup + " ...", "Index", "AppGroup", null, htmlAttributes: new { @class = "dropdown-item" })
+                        <div class="dropdown-divider"></div>
+                        @Html.ActionLink(Resources.Resource.DefineRole + " ...", "Index", "Role", null, htmlAttributes: new { @class = "dropdown-item" })
+                        <div class="dropdown-divider"></div>
+                        @Html.ActionLink(Resources.Resource.DefineRequestType + " ...", "Index", "RequestType", null, htmlAttributes: new { @class = "dropdown-item" })
+                        @Html.ActionLink(Resources.Resource.DefineRequestStatus + " ...", "Index", "RequestStatus", null, htmlAttributes: new { @class = "dropdown-item" })
+                    </div>
+                </li>
+
+                <li class="nav-item dropdown form-inline">
+                    <span class="glyphicon glyphicon-tasks" style="color:gray"></span>
+                    <a class="nav-link dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        @Resources.Resource.Operations
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink">
+                        @Html.ActionLink(Resources.Resource.DefineAppResource + " ...", "Index", "AppResource", null, htmlAttributes: new { @class = "dropdown-item" })
+                        <div class="dropdown-divider"></div>
+                        @Html.ActionLink(Resources.Resource.DefineAppUser + " ...", "Index", "AppUser", null, htmlAttributes: new { @class = "dropdown-item" })
+                        <div class="dropdown-divider"></div>
+                        @Html.ActionLink(Resources.Resource.SubmitRequest + " ...", "Index", "Request", null, htmlAttributes: new { @class = "dropdown-item" })
+                        @Html.ActionLink(Resources.Resource.ReferralRequest + " ...", "ReferralRequest", "Request", null, htmlAttributes: new { @class = "dropdown-item" })
+                        @Html.ActionLink(Resources.Resource.Response + " ...", "ResponseRequest", "Request", null, htmlAttributes: new { @class = "dropdown-item" })
+                    </div>
+                </li>
+
+                <li class="nav-item dropdown form-inline">
+                    <span class="glyphicon glyphicon-th-large" style="color:gray"></span>
+                    <a class="nav-link dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        @Resources.Resource.Views
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink">
+                        @Html.ActionLink(Resources.Resource.SearchApplication + " ...", "Search", "Application", null, htmlAttributes: new { @class = "dropdown-item" })
+                        @*<a class="dropdown-item" href="#">Action</a>*@
+                    </ul>
+                </li>
+
+                <li class="nav-item dropdown form-inline">
+                    <span class="glyphicon glyphicon-signal" style="color:gray"></span>
+                    <a class="nav-link dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        @Resources.Resource.Reports
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink">
+                        @*<a class="dropdown-item" href="#">Action</a>*@
+                    </div>
+                </li>
+
+                <li class="nav-item dropdown form-inline">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <span class="glyphicon glyphicon-flag" style="color:gray"></span>
+                        @Resources.Resource.ChangeLanguage
+                    </a>
+                    <ul class="dropdown-menu  dropdown-menu-right" aria-labelledby="dropdownMenuLink">
+                        @Html.ActionLink(@Resources.Resource.English, "ChangeLanguage", "Language", new { SelectedLanguage = "en" }, new { @class = "dropdown-item" })
+                        @Html.ActionLink(@Resources.Resource.Farsi, "ChangeLanguage", "Language", new { SelectedLanguage = "fa" }, new { @class = "dropdown-item" })
+                    </ul>
+                </li>
+
+                <li class="nav-item dropdown form-inline">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <span class="glyphicon glyphicon-book" style="color:gray"></span>
+                        @Resources.Resource.Help
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink">
+                        @Html.ActionLink(Resources.Resource.About + " ...", "About", "Home", null, htmlAttributes: new { @class = "dropdown-item" })
+                        @*<a class="dropdown-item" href="#">Action</a>*@
+                    </div>
+                </li>
+
+                @Html.Partial("_LoginPartial") @* پارتشیال ویو برای مدیریت عضویت و ورود/خروج کاربر سیستم *@
+
+                @* ذکر عنوان مسیریاب تعریف شده در تنظیمات اولیه *@
+                @*@Html.ActionLink("گروه بندی", "Index", "ApplicationGroup", "ThirdPattern", htmlAttributes: new { @class = "nav-link" })*@
+                @*@Html.ActionLink("گروه بندی", "Index", "ApplicationGroup", null, htmlAttributes: new { @class = "nav-item nav-link active" })
+                    @Html.ActionLink("برنامه", "Index", "Application", null, htmlAttributes: new { @class = "nav-item nav-link active" })*@
+
+                @*<a class="nav-item nav-link" href="#">Features</a>
+                    <a class="nav-item nav-link" href="#">Pricing</a>
+                    <a class="nav-item nav-link disabled" href="#">Disabled</a>*@
+            </ul>
+        </div>
+    </nav>
+
+    <hr />
+
+    <div class="container-fluid text-center">
+        <div class="row content">
+            <div class="col-sm-2">
+                <a href="#CartblockPanel" class="btn btn-secondary btn-sm btn-block text-right" data-toggle="collapse">
+                    @Resources.Resource.CartblockPanel @ViewBag.CartbotName
+                </a>
+                <div class="border border-dark rounded">
+                    <div class="form-group collapse" id="CartblockPanel">
+                        @if (Request.IsAuthenticated)
+                        {
+                            if (ViewBag.IsAdmin)
+                            {
+                                @Html.ActionLink(Resources.Resource.Unreferral + (string)ViewBag.UnreadQty + " ...", "ReferralRequest", "Request", null, htmlAttributes: new { @class = "dropdown-item" })
+                            }
+                            else
+                            {
+                                @Html.ActionLink(Resources.Resource.NotCheck + (string)ViewBag.NotCheckQty + " ...", "index", "Request", null, htmlAttributes: new { @class = "dropdown-item" })
+                                @Html.ActionLink(Resources.Resource.Unreferral + (string)ViewBag.UnReferralQty + " ...", "index", "Request", null, htmlAttributes: new { @class = "dropdown-item" })
+                            }
+                        }
+                    </div>
+                </div>
+                <a href="#CartblockPanel" class="btn btn-secondary btn-sm btn-block glyphicon glyphicon-bookmark text-left" style="height:30px" data-toggle="collapse"></a>
+            </div>
+            <div class="col-sm-8 text-center">
+                <div class="container body-content">
+                    @* ------------------------------ *@
+                    @* ها View متد فوق محل بارکزاری *@
+                    @* ------------------------------ *@
+                    @RenderBody()
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <hr />
+
+    <footer style="text-align:center">
+        <p>@DateTime.Now.Year&copy; @Resources.Resource.IntegratedSystem - @Resources.Resource.ApplicationTitle</p>
+    </footer>
+
+
+    @Scripts.Render("~/bundles/jquery") @*علت اینکه این تگ پایین گذاشته می شود این است که در صورت وجود خطا در فایل جاوا باعث بروز خطا در زمان بارگذاری صفحه نمی شود.*@
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+
+</body>
+
+</html>

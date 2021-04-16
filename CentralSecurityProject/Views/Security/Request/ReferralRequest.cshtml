@@ -1,0 +1,60 @@
+﻿@model IEnumerable<CentralSecurityProject.ViewModels.Security.RequestViewModel>
+<h4><i class="glyphicon glyphicon-alert"></i>@ViewBag.Title</h4>
+<hr />
+<div class="col-md-12">
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr class="bg-secondary">
+                <th class="text-center">@Html.DisplayNameFor(m => m.RequestId)</th>
+                <th class="text-center">@Html.DisplayNameFor(m => m.RequestDate)</th>
+                <th class="text-center">@Html.DisplayNameFor(m => m.RequestUsername)</th>
+                <th class="text-center">@Html.DisplayNameFor(m => m.RequestTypeName)</th>
+                <th class="text-center">@Html.DisplayNameFor(m => m.RequestStatusName)</th>
+                <th class="text-center">@Resources.Resource.Operations</th>
+            </tr>
+        </thead>
+        <tbody>
+            @{
+                if (Model != null)
+                {
+                    foreach (CentralSecurityProject.ViewModels.Security.RequestViewModel item in Model)
+                    {
+                        if (true)
+                        {
+
+                        }
+                        <tr class="text-center">
+                            <td>@item.RequestId</td>
+                            <td>@item.PersianRequestDate</td>
+                            <td>@item.RequestUsername</td>
+                            <td>@item.RequestTypeName</td>
+                            <td>@item.RequestStatusName</td>
+                            <td>
+                                @if (item.RequestStatusId == 2)
+                                {
+                                    @Html.CustomActionLink(Resources.Resource.Referral, "Referral", "Request", new { id = item.RequestId }, linkClass: "btn btn-info btn-sm", actionLinkType: CentralSecurityProject.Common.ActionLinkType.Referral)
+                                }
+                                else
+                                {
+                                    @Html.CustomActionLink(Resources.Resource.Referral, "Referral", "Request", new { id = item.RequestId }, linkClass: "btn btn-secondary btn-sm disabled", actionLinkType: CentralSecurityProject.Common.ActionLinkType.Referral)
+                                }
+                                @if (item.RequestStatusId == 1)
+                                {
+                                    @Html.CustomActionLink(Resources.Resource.Approve, "Approve", "Request", new { id = item.RequestId }, linkClass: "btn btn-success btn-sm", actionLinkType: CentralSecurityProject.Common.ActionLinkType.Approve)
+                                    <a></a>
+                                    @Html.CustomActionLink(Resources.Resource.Cancel, "Cancel", "Request", new { id = item.RequestId }, linkClass: "btn btn-danger btn-sm", actionLinkType: CentralSecurityProject.Common.ActionLinkType.Cancel)
+                                }
+                                else
+                                {
+                                    @Html.CustomActionLink(Resources.Resource.Approve, "Approve", "Request", new { id = item.RequestId }, linkClass: "btn btn-secondary btn-sm disabled", actionLinkType: CentralSecurityProject.Common.ActionLinkType.Approve)
+                                    <a></a>
+                                    @Html.CustomActionLink(Resources.Resource.Cancel, "Cancel", "Request", new { id = item.RequestId }, linkClass: "btn btn-secondary btn-sm disabled", actionLinkType: CentralSecurityProject.Common.ActionLinkType.Cancel)
+                                }
+                            </td>
+                        </tr>
+                    }
+                }
+            }
+        </tbody>
+    </table>
+</div>

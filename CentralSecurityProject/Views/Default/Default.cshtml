@@ -1,0 +1,15 @@
+﻿@{
+    Layout = "~/Views/Shared/_SecondLayout.cshtml";
+    ViewBag.Title = "Second Layout";
+    ViewBag.Message = "Hello World!!!";
+}
+
+<h2>@ViewBag.Title</h2>
+<h3>@ViewBag.Message</h3>
+
+<p>Use this area to provide additional information.</p>
+
+@*@CentralSecurityProject.Common.TraditionalHtmlHelper.Label("user", "نام کاربری")*@
+@* چونکه تگ های اچ تی ام ال کد می شوند نیاز داریم که از متد زیر استفاده کنیم *@
+@Html.Raw(CentralSecurityProject.Common.TraditionalHtmlHelper.Label("user", "نام کاربری"))
+

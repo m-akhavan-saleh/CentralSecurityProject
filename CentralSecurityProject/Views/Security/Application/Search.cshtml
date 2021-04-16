@@ -1,0 +1,20 @@
+﻿<h4><i class="glyphicon glyphicon-search"></i>@ViewBag.Title</h4>
+<hr />
+<br />
+@using (Ajax.BeginForm("GoSearch", "Application", new AjaxOptions()
+{
+    HttpMethod = "Get",
+    InsertionMode = InsertionMode.Replace,
+    UpdateTargetId = "result"
+}))
+{
+    <div class="form-inline">
+        @Html.Label("عنوان", htmlAttributes: new { @class = "col-form-label", @for = "name" })
+        <div class="col-sm-10">
+            @Html.TextBox("ApplicationName", "", htmlAttributes: new { @class = "form-control" })
+            <input type="submit" id="SearchBtn" class="btn btn-sm btn-secondary" value=@Resources.Resource.Search>
+        </div>
+    </div>
+    <br />
+    <div id="result"></div>
+}

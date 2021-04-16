@@ -1,0 +1,70 @@
+﻿@model IEnumerable<CentralSecurityProject.Models.Security.RequestTypeModel>
+<h4><i class="glyphicon glyphicon-alert"></i>@ViewBag.Title</h4>
+<hr />
+
+<div class="col-md-12">
+    @Html.CustomActionLink(Resources.Resource.Create, "Create", "RequestType", null, actionLinkType: CentralSecurityProject.Common.ActionLinkType.Create) |
+    @{
+        if (ViewBag.ID != null)
+        {
+            @Html.CustomActionLink(Resources.Resource.Edit, "Edit", "RequestType", new { id = @ViewBag.ID }, actionLinkType: CentralSecurityProject.Common.ActionLinkType.Edit)
+            <a>|</a>
+            @Html.CustomActionLink(Resources.Resource.Delete, "Delete", "RequestType", new { id = @ViewBag.ID }, actionLinkType: CentralSecurityProject.Common.ActionLinkType.Delete)
+            <a>|</a>
+            @Html.CustomActionLink(Resources.Resource.Details, "Details", "RequestType", new { id = @ViewBag.ID }, actionLinkType: CentralSecurityProject.Common.ActionLinkType.Details)
+        }
+        else
+        {
+            @Html.CustomActionLink(Resources.Resource.Edit, "Edit", "RequestType", new { id = @ViewBag.ID }, linkClass: "btn btn-secondary btn-sm disabled", actionLinkType: CentralSecurityProject.Common.ActionLinkType.Edit)
+            <a>|</a>
+            @Html.CustomActionLink(Resources.Resource.Delete, "Delete", "RequestType", new { id = @ViewBag.ID }, linkClass: "btn btn-secondary btn-sm disabled", actionLinkType: CentralSecurityProject.Common.ActionLinkType.Delete)
+            <a>|</a>
+            @Html.CustomActionLink(Resources.Resource.Details, "Details", "RequestType", new { id = @ViewBag.ID }, linkClass: "btn btn-secondary btn-sm disabled", actionLinkType: CentralSecurityProject.Common.ActionLinkType.Details)
+        }
+    }
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr class="bg-secondary text-center">
+                <th></th>
+                <th>@Html.DisplayNameFor(m => m.RequestTypeId)</th>
+                <th>@Html.DisplayNameFor(m => m.RequestTypeName)</th>
+                <th>@Html.DisplayNameFor(m => m.IsActive)</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            @{
+                if (Model != null)
+                {
+                    foreach (CentralSecurityProject.Models.Security.RequestTypeModel item in Model)
+                    {
+                        if (ViewBag.ID != null && ViewBag.ID == @item.RequestTypeId)
+                        {
+                            <tr style="background-color:#d6e0f5" class="text-center">
+                                <td>
+                                    @Html.CustomActionLink(Resources.Resource.Select, "Index", "RequestType", new { id = item.RequestTypeId }, linkClass: "btn btn-primary btn-sm", actionLinkType: CentralSecurityProject.Common.ActionLinkType.Selected)
+                                </td>
+                                <td>@item.RequestTypeId</td>
+                                <td>@item.RequestTypeName</td>
+                                <td>@(item.IsActive ? "فعال" : "غیر فعال")</td>
+                            </tr>
+                        }
+                        else
+                        {
+                            <tr class="text-center">
+                                <td>
+                                    @Html.CustomActionLink(Resources.Resource.Select, "Index", "RequestType", new { id = item.RequestTypeId }, linkClass: "btn btn-secondary btn-sm", actionLinkType: CentralSecurityProject.Common.ActionLinkType.Unselected)
+                                </td>
+                                <td>@item.RequestTypeId</td>
+                                <td>@item.RequestTypeName</td>
+                                <td>@(item.IsActive ? "فعال" : "غیر فعال")</td>
+                            </tr>
+                        }
+                    }
+                }
+            }
+        </tbody>
+    </table>
+
+
+</div>

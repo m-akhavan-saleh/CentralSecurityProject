@@ -1,0 +1,67 @@
+﻿@model CentralSecurityProject.ViewModels.Security.RequestViewModel
+<h4><i class="glyphicon glyphicon-apple"></i>@ViewBag.Title</h4>
+<hr />
+
+@using (Html.BeginForm("Response", "Request", null, FormMethod.Post, htmlAttributes: new { }))
+{
+    @Html.AntiForgeryToken()
+
+    @Html.HiddenFor(m => m.RequestId)
+
+    <div class="form-group row">
+        @Html.LabelFor(m => m.RequestId, htmlAttributes: new { @class = "col-md-2 col-form-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.RequestId, htmlAttributes: new { @class = "form-control", @disabled = "disabled" })
+        </div>
+    </div>
+
+    <div class="form-group row">
+        @Html.LabelFor(m => m.PersianRequestDate, htmlAttributes: new { @class = "col-md-2 col-form-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.PersianRequestDate, htmlAttributes: new { @class = "form-control", @disabled = "disabled" })
+        </div>
+    </div>
+
+    <div class="form-group row">
+        @Html.LabelFor(m => m.RequestUsername, htmlAttributes: new { @class = "col-md-2 col-form-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.RequestUsername, htmlAttributes: new { @class = "form-control", @disabled = "disabled" })
+        </div>
+    </div>
+    
+    <div class="form-group row">
+        @Html.LabelFor(m => m.RequestTypeId, htmlAttributes: new { @class = "col-md-2 col-form-label" })
+        <div class="col-md-10">
+            @Html.DropDownListFor(m => m.RequestTypeId, (SelectList)ViewBag.RequestTypes, htmlAttributes: new { @class = "form-control", @disabled = "disabled" })
+        </div>
+    </div>
+
+    <div class="form-group row">
+        @Html.LabelFor(m => m.RequestDescription, htmlAttributes: new { @class = "col-md-2 col-form-label" })
+        <div class="col-md-10">
+            @Html.TextAreaFor(m => m.RequestDescription, htmlAttributes: new { @class = "form-control", @disabled = "disabled" })
+        </div>
+    </div>
+
+    <div class="form-group row">
+        @Html.LabelFor(m => m.ExpertId, htmlAttributes: new { @class = "col-md-2 col-form-label" })
+        <div class="col-md-10">
+            @Html.DropDownListFor(m => m.ExpertId, (SelectList)ViewBag.Experts, htmlAttributes: new { @class = "form-control", @disabled = "disabled" })
+            @Html.ValidationMessageFor(m => m.ExpertId, "", new { @class = "text-danger field-validation-error" })
+        </div>
+    </div>
+
+    <div class="form-group row">
+        @Html.LabelFor(m => m.Response, htmlAttributes: new { @class = "col-md-2 col-form-label" })
+        <div class="col-md-10">
+            @Html.TextAreaFor(m => m.Response, htmlAttributes: new { @class = "form-control" })
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <div class="offset-sm-2 col-md-10">
+            <input type="submit" value=@Resources.Resource.Submit class="btn btn-success" />
+            @Html.ActionLink(Resources.Resource.Back, "ResponseRequest", "Request", null, htmlAttributes: new { @class = "btn btn-secondary" })
+        </div>
+    </div>
+}

@@ -1,0 +1,71 @@
+﻿@model IEnumerable<CentralSecurityProject.Models.Security.AppParameterModel>
+<h4><i class="glyphicon glyphicon-alert"></i>@ViewBag.Title</h4>
+<hr />
+
+<div class="col-md-12">
+    @Html.ActionLink("جدید", "Create", "AppParameter", null, htmlAttributes: new { @class = "btn btn-secondary" }) |
+    @{
+        if (ViewBag.ID != null)
+        {
+            @Html.ActionLink("ویرایش", "Edit", "AppParameter", new { id = @ViewBag.ID }, htmlAttributes: new { @class = "btn btn-secondary" })
+            <a>|</a>
+            @Html.ActionLink("حذف", "Delete", "AppParameter", new { id = @ViewBag.ID }, htmlAttributes: new { @class = "btn btn-secondary" })
+            <a>|</a>
+            @Html.ActionLink("جزئیات", "Details", "AppParameter", new { id = @ViewBag.ID }, htmlAttributes: new { @class = "btn btn-secondary" })
+        }
+        else
+        {
+            @Html.ActionLink("ویرایش", "Edit", "AppParameter", null, htmlAttributes: new { @class = "btn btn-secondary disabled" })
+            <a>|</a>
+            @Html.ActionLink("حذف", "Delete", "AppParameter", null, htmlAttributes: new { @class = "btn btn-secondary disabled" })
+            <a>|</a>
+            @Html.ActionLink("جزئیات", "Details", "AppParameter", null, htmlAttributes: new { @class = "btn btn-secondary disabled" })
+        }
+    }
+
+    <table class="table table-hover">
+        <thead>
+            <tr class="bg-secondary">
+                <th class="text-center"></th>
+                <th class="text-center">@Html.DisplayNameFor(m => m.AppParameterId)</th>
+                <th class="text-center">@Html.DisplayNameFor(m => m.ApplicationId)</th>
+                <th class="text-center">@Html.DisplayNameFor(m => m.ParamString)</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            @{
+                if (Model != null)
+                {
+                    foreach (CentralSecurityProject.Models.Security.AppParameterModel item in Model)
+                    {
+                        if (ViewBag.ID != null && ViewBag.ID == @item.AppParameterId)
+                        {
+                            <tr class="text-center" style="background-color:#d6e0f5">
+                                <td>
+                                    @Html.ActionLink("انتخاب", "Index", "AppParameter", new { id = item.AppParameterId }, htmlAttributes: new { @class = "btn btn-secondary" })
+                                </td>
+                                <td>@item.AppParameterId</td>
+                                <td>@item.ApplicationId</td>
+                                <td>@item.ParamString</td>
+                            </tr>
+                        }
+                        else
+                        {
+                            <tr class="text-center">
+                                <td>
+                                    @Html.ActionLink("انتخاب", "Index", "AppParameter", new { id = item.AppParameterId }, htmlAttributes: new { @class = "btn btn-secondary" })
+                                </td>
+                                <td>@item.AppParameterId</td>
+                                <td>@item.ApplicationId</td>
+                                <td>@item.ParamString</td>
+                            </tr>
+                        }
+                    }
+                }
+            }
+        </tbody>
+    </table>
+
+
+</div>

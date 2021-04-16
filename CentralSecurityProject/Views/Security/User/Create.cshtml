@@ -1,0 +1,169 @@
+﻿@model CentralSecurityProject.Models.Security.UserModel
+<h4><i class="glyphicon glyphicon-apple"></i>تعریف @ViewBag.Title</h4>
+<hr />
+
+@using (Html.BeginForm("Create", "User", FormMethod.Post, htmlAttributes: new { enctype = "multipart/form-data" })) // اگر این قسمت آخر اضافه نشود فرم به تنهایی پست می شود ولی فایل به همراه آن ارسال نمی شود
+{
+    @Html.AntiForgeryToken()
+
+    @Html.ValidationSummary(false, null, htmlAttributes: new { @class = "alert alert-danger" }) // false : دراین زمان علاوه بر خطاهای سطح فرم خطاهای کنترلر ها رو نیز نمایش می دهد
+
+    <div class="form-group row">
+        @Html.LabelFor(m => m.UserLogin, htmlAttributes: new { @class = "col-md-2 col-form-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.UserLogin, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.UserLogin, "", new { @class = "text-danger field-validation-error" })
+        </div>
+    </div>
+
+    <div class="form-group row">
+        @Html.LabelFor(m => m.UserName, htmlAttributes: new { @class = "col-md-2 col-form-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.UserName, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.UserName, "", new { @class = "text-danger field-validation-error" })
+        </div>
+    </div>
+
+    <div class="form-group row">
+        @Html.LabelFor(m => m.Password, htmlAttributes: new { @class = "col-md-2 col-form-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.Password, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger field-validation-error" })
+        </div>
+    </div>
+
+    <div class="form-group row">
+        @Html.LabelFor(m => m.OldPass, htmlAttributes: new { @class = "col-md-2 col-form-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.OldPass, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.OldPass, "", new { @class = "text-danger field-validation-error" })
+        </div>
+    </div>
+
+    <div class="form-group row">
+        @Html.LabelFor(m => m.Departement, htmlAttributes: new { @class = "col-md-2 col-form-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.Departement, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Departement, "", new { @class = "text-danger field-validation-error" })
+        </div>
+    </div>
+
+    <div class="form-group row">
+        @Html.LabelFor(m => m.Post, htmlAttributes: new { @class = "col-md-2 col-form-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.Post, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Post, "", new { @class = "text-danger field-validation-error" })
+        </div>
+    </div>
+
+    <div class="form-group row">
+        @Html.LabelFor(m => m.IsActive, htmlAttributes: new { @class = "col-md-2 col-form-label" })
+        <div class="col-md-10">
+            @Html.CheckBoxFor(m => m.IsActive, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.IsActive, "", new { @class = "text-danger field-validation-error" })
+        </div>
+    </div>
+
+    <div class="form-group row">
+        @Html.LabelFor(m => m.Telephon, htmlAttributes: new { @class = "col-md-2 col-form-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.Telephon, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Telephon, "", new { @class = "text-danger field-validation-error" })
+        </div>
+    </div>
+
+    <div class="form-group row">
+        @Html.LabelFor(m => m.PersonalId, htmlAttributes: new { @class = "col-md-2 col-form-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.PersonalId, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.PersonalId, null, new { @class = "text-danger field-validation-error" })
+        </div>
+    </div>
+
+    <div class="form-group row">
+        @Html.LabelFor(m => m.SetPassDate, htmlAttributes: new { @class = "col-md-2 col-form-label" })
+        <div class="col-md-10">
+            @Html.EditorFor(m => m.SetPassDate,new {htmlAttributes = new { @class = "form-control" }})
+            @Html.ValidationMessageFor(m => m.SetPassDate, "", new { @class = "text-danger field-validation-error" })
+        </div>
+    </div>
+
+    <div class="form-group row">
+        @Html.LabelFor(m => m.ChangePassAtNextLogon, htmlAttributes: new { @class = "col-md-2 col-form-label" })
+        <div class="col-md-10">
+            @Html.CheckBoxFor(m => m.ChangePassAtNextLogon, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.ChangePassAtNextLogon, "", new { @class = "text-danger field-validation-error" })
+        </div>
+    </div>
+
+    <div class="form-group row">
+        @Html.LabelFor(m => m.UserCanNotChangePass, htmlAttributes: new { @class = "col-md-2 col-form-label" })
+        <div class="col-md-10">
+            @Html.CheckBoxFor(m => m.UserCanNotChangePass, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.UserCanNotChangePass, "", new { @class = "text-danger field-validation-error" })
+        </div>
+    </div>
+
+    <div class="form-group row">
+        @Html.LabelFor(m => m.MaxPassAge, htmlAttributes: new { @class = "col-md-2 col-form-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.MaxPassAge, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.MaxPassAge, "", new { @class = "text-danger field-validation-error" })
+        </div>
+    </div>
+
+    <div class="form-group row">
+        @Html.LabelFor(m => m.MinPassAge, htmlAttributes: new { @class = "col-md-2 col-form-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.MinPassAge, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.MinPassAge, "", new { @class = "text-danger field-validation-error" })
+        </div>
+    </div>
+
+    <div class="form-group row">
+        @Html.LabelFor(m => m.MinPassLength, htmlAttributes: new { @class = "col-md-2 col-form-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.MinPassLength, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.MinPassLength, "", new { @class = "text-danger field-validation-error" })
+        </div>
+    </div>
+
+    <div class="form-group row">
+        @Html.LabelFor(m => m.PassMustComplexity, htmlAttributes: new { @class = "col-md-2 col-form-label" })
+        <div class="col-md-10">
+            @Html.CheckBoxFor(m => m.PassMustComplexity, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.PassMustComplexity, "", new { @class = "text-danger field-validation-error" })
+        </div>
+    </div>
+
+    <div class="form-group row">
+        @Html.LabelFor(m => m.EnforcePassHistory, htmlAttributes: new { @class = "col-md-2 col-form-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.EnforcePassHistory, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.EnforcePassHistory, "", new { @class = "text-danger field-validation-error" })
+        </div>
+    </div>
+
+    <div class="form-group row">
+        @Html.LabelFor(m => m.Photo, htmlAttributes: new { @class = "col-md-2 col-form-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.Photo, htmlAttributes: new { type = "file", @class = "form-control-file" })
+            @Html.ValidationMessageFor(m => m.Photo, "", new { @class = "text-danger field-validation-error" })
+        </div>
+    </div>
+
+    <div class="form-group row">
+        @Html.LabelFor(m => m.AspNetUserId, htmlAttributes: new { @class = "col-md-2 col-form-label" })
+        <div class="col-md-10">
+            @Html.DropDownListFor(m => m.AspNetUserId, (SelectList)ViewBag.AspNetUsers, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.AspNetUserId, "", new { @class = "text-danger field-validation-error" })
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <div class="offset-sm-2 col-md-10">
+            <input type="submit" value="ثبت" class="btn btn-success" />
+            @Html.ActionLink("بازگشت", "Index", "User", htmlAttributes: new { @class = "btn btn-secondary" })
+        </div>
+    </div>
+}

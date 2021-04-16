@@ -1,0 +1,76 @@
+﻿@model IEnumerable<CentralSecurityProject.Models.Security.AppUserModel>
+<h4><i class="glyphicon glyphicon-alert"></i>@ViewBag.Title</h4>
+<hr />
+
+<div class="col-md-12">
+    @Html.CustomActionLink(Resources.Resource.Create, "Create", "AppUser", null, actionLinkType: CentralSecurityProject.Common.ActionLinkType.Create) |
+    @{
+        if (ViewBag.ID != null)
+        {
+            @Html.CustomActionLink(Resources.Resource.Edit, "Edit", "AppUser", new { id = @ViewBag.ID, UserId = @ViewBag.UserId, ApplicationId = @ViewBag.ApplicationId }, actionLinkType: CentralSecurityProject.Common.ActionLinkType.Edit)
+            <a>|</a>
+            @Html.CustomActionLink(Resources.Resource.Delete, "Delete", "AppUser", new { id = @ViewBag.ID, UserId = @ViewBag.UserId, ApplicationId = @ViewBag.ApplicationId }, actionLinkType: CentralSecurityProject.Common.ActionLinkType.Delete)
+            <a>|</a>
+            @Html.CustomActionLink(Resources.Resource.Details, "Details", "AppUser", new { id = @ViewBag.ID, UserId = @ViewBag.UserId, ApplicationId = @ViewBag.ApplicationId }, actionLinkType: CentralSecurityProject.Common.ActionLinkType.Details)
+        }
+        else
+        {
+            @Html.CustomActionLink(Resources.Resource.Edit, "Edit", "AppUser", new { id = @ViewBag.ID, UserId = @ViewBag.UserId, ApplicationId = @ViewBag.ApplicationId }, linkClass: "btn btn-secondary btn-sm disabled", actionLinkType: CentralSecurityProject.Common.ActionLinkType.Edit)
+            <a>|</a>
+            @Html.CustomActionLink(Resources.Resource.Delete, "Delete", "AppUser", new { id = @ViewBag.ID, UserId = @ViewBag.UserId, ApplicationId = @ViewBag.ApplicationId }, linkClass: "btn btn-secondary btn-sm disabled", actionLinkType: CentralSecurityProject.Common.ActionLinkType.Delete)
+            <a>|</a>
+            @Html.CustomActionLink(Resources.Resource.Details, "Details", "AppUser", new { id = @ViewBag.ID, UserId = @ViewBag.UserId, ApplicationId = @ViewBag.ApplicationId }, linkClass: "btn btn-secondary btn-sm disabled", actionLinkType: CentralSecurityProject.Common.ActionLinkType.Details)
+        }
+    }
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr class="bg-secondary text-center">
+                <th></th>
+                <th>@Html.DisplayNameFor(m => m.AppUserId)</th>
+                <th>@Html.DisplayNameFor(m => m.ApplicationId)</th>
+                <th>@Html.DisplayNameFor(m => m.UserId)</th>
+                <th>@Html.DisplayNameFor(m => m.IsActive)</th>
+                <th>@Html.DisplayNameFor(m => m.IsAdmin)</th>
+                <th>@Html.DisplayNameFor(m => m.LastMachineName)</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model != null)
+            {
+                foreach (CentralSecurityProject.Models.Security.AppUserModel item in Model)
+                {
+                    if (ViewBag.ID != null && ViewBag.ID == @item.AppUserId)
+                    {
+                        <tr class="text-center" style="background-color:#d6e0f5">
+                            <td>
+                                @Html.ActionLink(Resources.Resource.Select, "Index", "AppUser", new { id = item.AppUserId }, htmlAttributes: new { @class = "btn btn-primary btn-sm" })
+                            </td>
+                            <td>@item.AppUserId</td>
+                            <td>@item.ApplicationId</td>
+                            <td>@item.UserId</td>
+                            <td>@(item.IsActive ? "فعال" : "غیر فعال")</td>
+                            <td>@(item.IsAdmin ? "مدیر سیستم" : "کاربر سیستم")</td>
+                            <td>@item.LastMachineName</td>
+                        </tr>
+                    }
+                    else
+                    {
+                        <tr class="text-center">
+                            <td>
+                                @Html.ActionLink(Resources.Resource.Select, "Index", "AppUser", new { id = item.AppUserId }, htmlAttributes: new { @class = "btn btn-secondary btn-sm" })
+                            </td>
+                            <td>@item.AppUserId</td>
+                            <td>@item.ApplicationId</td>
+                            <td>@item.UserId</td>
+                            <td>@(item.IsActive ? "فعال" : "غیر فعال")</td>
+                            <td>@(item.IsAdmin ? "مدیر سیستم" : "کاربر سیستم")</td>
+                            <td>@item.LastMachineName</td>
+                        </tr>
+                    }
+                }
+            }
+        </tbody>
+    </table>
+
+
+</div>

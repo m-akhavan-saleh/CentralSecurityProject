@@ -1,0 +1,29 @@
+﻿@model IEnumerable<CentralSecurityProject.ViewModels.Security.ApplicationViewModel>
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr class="bg-secondary text-white">
+            <th class="text-center">@Html.DisplayNameFor(m => m.ApplicationNum)</th>
+            <th class="text-center">@Html.DisplayNameFor(m => m.ApplicationName)</th>
+            <th class="text-center">@Html.DisplayNameFor(m => m.ApplicationGroupName)</th>
+            <th class="text-center">@Resources.Resource.Operations</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (CentralSecurityProject.ViewModels.Security.ApplicationViewModel item in Model)
+            {
+            <tr class="text-center">
+                <td>@item.ApplicationNum</td>
+                <td>@item.ApplicationName</td>
+                <td>@item.ApplicationGroupName</td>
+                <td>
+                    @Html.CustomActionLink(Resources.Resource.Edit, "Edit", "Application", new { id = item.ID }, actionLinkType: CentralSecurityProject.Common.ActionLinkType.Edit) |
+                    @Html.CustomActionLink(Resources.Resource.Delete, "Delete", "Application", new { id = item.ID }, actionLinkType: CentralSecurityProject.Common.ActionLinkType.Delete) |
+                    @Html.CustomActionLink(Resources.Resource.Details, "Details", "Application", new { id = item.ID }, actionLinkType: CentralSecurityProject.Common.ActionLinkType.Details)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+

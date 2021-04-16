@@ -1,0 +1,35 @@
+﻿<div class="col-md-12">
+    <table class="table table-hover table-bordered">
+        <thead>
+            <tr class="bg-secondary text-center">
+                <th>@Html.DisplayName(Resources.Resource.UserLogin)</th>
+                <th>@Html.DisplayName(Resources.Resource.UserName)</th>
+                <th>@Html.DisplayName(Resources.Resource.Departement)</th>
+                <th>@Html.DisplayName(Resources.Resource.Post)</th>
+                <th>@Html.DisplayName(Resources.Resource.Telephon)</th>
+                <th>@Html.DisplayName(Resources.Resource.IsActive)</th>
+            </tr>
+        </thead>
+
+        @{
+            if (ViewBag.Users != null)
+            {
+                foreach (CentralSecurityProject.Models.Security.UserModel item in ViewBag.Users)
+                {
+                    <tbody>
+                        <tr class="text-center">
+                            <td>@item.UserLogin</td>
+                            <td>@item.UserName</td>
+                            <td>@item.Departement</td>
+                            <td>@item.Post</td>
+                            <td>@item.Telephon</td>
+                            <td>@(item.IsActive ? "فعال" : "غیر فعال")</td>
+                        </tr>
+                    </tbody>
+                }
+            }
+        }
+    </table>
+
+
+</div>
